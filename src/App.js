@@ -9,21 +9,19 @@ class App extends Component {
     store:STORE
   }
 
+
+  deleteFound(list, listId, id)
+  { 
+    if (listId === list.id)
+    {
+      return list.cardIds.splice(list.cardIds.indexOf(id), 1);
+    } 
+    return null;
+  }
+
   deleteCardHandler = (listId, id) => {
-    
-    console.log(this.state.store)
-    //const revisedLists = this.state.store.lists.map((lists)=lists).filter((card)=> card.id !== id);
-
-    const foundList = this.state.store.lists.filter((lists) => lists.id === listId).filter((card)=> card.cardIds !== id);
-
-
-    console.log(foundList)
-
+    this.state.store.lists.map((list) => this.deleteFound(list, listId, id));
     this.setState({
-   //   store: {
-    //    ...this.state.store,
-   //     lists: revisedLists
-   //   }
     });
 
   }
